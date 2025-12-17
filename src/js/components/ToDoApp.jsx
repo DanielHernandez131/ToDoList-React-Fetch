@@ -8,6 +8,21 @@ const TodoApp = () => {
 
     const API_URL = "https://playground.4geeks.com/todo";
 
+    // Crea un usuario
+    const createUser = async () => {
+        try {
+            await fetch("https://playground.4geeks.com/todo/users/DanielH", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify([])
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     // Obtener tareas
     const getTasks = async () => {
         try {
@@ -71,6 +86,7 @@ const TodoApp = () => {
 
     // Cargar tareas
     useEffect(() => {
+        createUser();
         getTasks();
     }, []);
 
